@@ -32,6 +32,12 @@ return { -- Autoformat
 			nix = { "nixpkgs-fmt" },
 			python = { "black" },
 			markdown = { "prettierd" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+			javascript = { "prettierd" },
+			typescript = { "prettierd" },
+			css = { "prettierd" },
+			scss = { "prettierd" },
 		},
 	},
 }
