@@ -3,6 +3,8 @@ return {
 	opts = {},
 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	config = function()
+		require("obsidian").get_client().opts.ui.enable = false
+		vim.api.nvim_buf_clear_namespace(0, vim.api.nvim_get_namespaces()["ObsidianUI"], 0, -1)
 		require("render-markdown").setup({
 			-- Whether Markdown should be rendered by default or not
 			enabled = true,
@@ -20,55 +22,55 @@ return {
 			preset = "none",
 			-- Capture groups that get pulled from markdown
 			markdown_query = [[
-        (section) @section
+(section) @section
 
-        (atx_heading [
-            (atx_h1_marker)
-            (atx_h2_marker)
-            (atx_h3_marker)
-            (atx_h4_marker)
-            (atx_h5_marker)
-            (atx_h6_marker)
-        ] @heading)
-        (setext_heading) @heading
+(atx_heading [
+    (atx_h1_marker)
+    (atx_h2_marker)
+    (atx_h3_marker)
+    (atx_h4_marker)
+    (atx_h5_marker)
+    (atx_h6_marker)
+] @heading)
+(setext_heading) @heading
 
-        (thematic_break) @dash
+(thematic_break) @dash
 
-        (fenced_code_block) @code
+(fenced_code_block) @code
 
-        [
-            (list_marker_plus)
-            (list_marker_minus)
-            (list_marker_star)
-        ] @list_marker
+[
+    (list_marker_plus)
+    (list_marker_minus)
+    (list_marker_star)
+] @list_marker
 
-        (task_list_marker_unchecked) @checkbox_unchecked
-        (task_list_marker_checked) @checkbox_checked
+(task_list_marker_unchecked) @checkbox_unchecked
+(task_list_marker_checked) @checkbox_checked
 
-        (block_quote) @quote
+(block_quote) @quote
 
-        (pipe_table) @table
-    ]],
+(pipe_table) @table
+]],
 			-- Capture groups that get pulled from quote nodes
 			markdown_quote_query = [[
-        [
-            (block_quote_marker)
-            (block_continuation)
-        ] @quote_marker
-    ]],
+[
+(block_quote_marker)
+(block_continuation)
+] @quote_marker
+]],
 			-- Capture groups that get pulled from inline markdown
 			inline_query = [[
-        (code_span) @code
+(code_span) @code
 
-        (shortcut_link) @shortcut
+(shortcut_link) @shortcut
 
-        [
-            (image)
-            (email_autolink)
-            (inline_link)
-            (full_reference_link)
-        ] @link
-    ]],
+[
+(image)
+(email_autolink)
+(inline_link)
+(full_reference_link)
+] @link
+]],
 			-- The level of logs to write to file: vim.fn.stdpath('state') .. '/render-markdown.log'
 			-- Only intended to be used for plugin development / debugging
 			log_level = "error",
@@ -81,11 +83,11 @@ return {
 				gitcommit = {
 					enabled = true,
 					query = [[
-                ((message) @injection.content
-                    (#set! injection.combined)
-                    (#set! injection.include-children)
-                    (#set! injection.language "markdown"))
-            ]],
+((message) @injection.content
+    (#set! injection.combined)
+    (#set! injection.include-children)
+    (#set! injection.language "markdown"))
+]],
 				},
 			},
 			-- Vim modes that will show a rendered view of the markdown file
@@ -308,15 +310,15 @@ return {
 				cell = "padded",
 				-- Gets placed in delimiter row for each column, position is based on alignmnet
 				alignment_indicator = "━",
-        -- Characters used to replace table border
-        -- Correspond to top(3), delimiter(3), bottom(3), vertical, & horizontal
-        -- stylua: ignore
-        border = {
-            '┌', '┬', '┐',
-            '├', '┼', '┤',
-            '└', '┴', '┘',
-            '│', '─',
-        },
+-- Characters used to replace table border
+-- Correspond to top(3), delimiter(3), bottom(3), vertical, & horizontal
+-- stylua: ignore
+border = {
+'┌', '┬', '┐',
+'├', '┼', '┤',
+'└', '┴', '┘',
+'│', '─',
+},
 				-- Highlight for table heading, delimiter, and the line above
 				head = "RenderMarkdownTableHead",
 				-- Highlight for everything else, main table rows and the line below
