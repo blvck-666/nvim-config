@@ -148,6 +148,9 @@ return {
 					keywords = "bold,italic",
 					constants = "bold",
 				},
+				colors = {
+					float_bg = require("onedarkpro.helpers").lighten("#000000", 8.8),
+				},
 			})
 			vim.cmd("colorscheme onedark_dark")
 		end,
