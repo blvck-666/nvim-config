@@ -156,6 +156,9 @@ return {
 					},
 				},
 			},
+
+			denols = {},
+			cssls = {},
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -170,20 +173,33 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			--LUA
 			"stylua", -- Used to format Lua code
 
+			--PYTHON
 			"pyright",
 			"black",
 			"mypy",
 
+			--NIX
 			"rnix-lsp",
 
+			--MARKDOWN
 			"marksman",
 			"markdownlint",
 
+			--BASH
 			"bash-language-server",
 			"beautysh",
 			"shellcheck",
+
+			--JAVASCRIPT
+			"deno",
+			"prettier",
+			"prettierd",
+
+			--CSS
+			"css-lsp",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
