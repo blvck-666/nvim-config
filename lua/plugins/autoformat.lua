@@ -30,7 +30,7 @@ return { -- Autoformat
 		formatters_by_ft = {
 			lua = { "stylua" },
 			nix = { "nixpkgs-fmt" },
-			python = { "black" },
+			python = { "ruff" },
 			markdown = { "prettierd" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },

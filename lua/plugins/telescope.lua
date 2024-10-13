@@ -22,6 +22,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		-- Useful for getting pretty icons, but requires a Nerd Font.
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		{ "nvim-telescope/telescope-project.nvim" },
+		{ "nvim-telescope/telescope-file-browser.nvim" },
 	},
 	config = function()
 		require("telescope").setup({
@@ -39,6 +40,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 					search_by = "title",
 					sync_with_nvim_tree = true, -- default false
 				},
+
+				file_browser = {
+					theme = "ivy",
+					-- disables netrw and use telescope-file-browser in its place
+					hijack_netrw = true,
+				},
 			},
 		})
 
@@ -46,6 +53,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
 		pcall(require("telescope").load_extension, "project")
+		pcall(require("telescope").load_extension, "file_browser")
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
