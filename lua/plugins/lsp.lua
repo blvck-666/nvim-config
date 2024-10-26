@@ -157,7 +157,27 @@ return {
 				},
 			},
 
-			denols = {},
+			denols = {
+				root_dir = require("lspconfig.util").root_pattern("deno.jsno", "deno.jsonc"),
+				init_options = {
+					enable = true,
+					unstable = true,
+					suggest = {
+						imports = {
+							hosts = {
+								["https://deno.land"] = true,
+								["https://cdn.nest.land"] = true,
+								["https://crux.land"] = true,
+							},
+						},
+					},
+				},
+				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "svelte" },
+			},
+			ts_ls = {
+				root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+				single_file_support = false,
+			},
 			cssls = {},
 		}
 
@@ -195,6 +215,7 @@ return {
 
 			--JAVASCRIPT
 			"deno",
+			"typescript-language-server",
 			"prettier",
 			"prettierd",
 
