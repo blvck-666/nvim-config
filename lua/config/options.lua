@@ -36,3 +36,5 @@ vim.opt.scrolloff = 10
 vim.opt.textwidth = 80
 
 vim.opt.conceallevel = 1
+vim.opt.termguicolors = true
+vim.opt.wrap = false

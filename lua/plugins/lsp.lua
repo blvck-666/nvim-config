@@ -158,7 +158,7 @@ return {
 			},
 
 			denols = {
-				root_dir = require("lspconfig.util").root_pattern("deno.jsno", "deno.jsonc"),
+				root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
 				init_options = {
 					enable = true,
 					unstable = true,

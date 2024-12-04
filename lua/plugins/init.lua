@@ -97,7 +97,59 @@ return {
 			{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
 		},
 		opts = {
+			close_if_last_window = true,
+			popup_border_style = "single",
+			enable_git_status = true,
+			enable_diagnostics = true,
+			sort_case_insensitive = true,
+			default_component_configs = {
+				indent = {
+					with_markers = true,
+					with_expanders = true,
+				},
+				modified = {
+					symbol = "",
+					highlight = "NeoTreeModified",
+				},
+				icon = {
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "",
+					default = "",
+				},
+				git_status = {
+					symbols = {
+						--Change type
+						added = "✚",
+						deleted = "✖",
+						modified = "",
+						renamed = "",
+						-- Status type
+						untracked = "",
+						ignored = "",
+						unstaged = "",
+						staged = "",
+						conflict = "",
+					},
+				},
+			},
+			window = {
+				position = "float",
+				width = 35,
+			},
 			filesystem = {
+				use_libuv_file_watcher = true,
+				filtered_items = {
+					hide_dotfiles = false,
+					hide_gitignored = false,
+					hide_by_name = {
+						"node_modules",
+					},
+					never_show = {
+						".DS_Store",
+						"thumbs.db",
+					},
+				},
 				window = {
 					mappings = {
 						["\\"] = "close_window",
