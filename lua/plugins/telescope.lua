@@ -92,5 +92,22 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		end, { desc = "[S]earch [N]eovim files" })
 
 		vim.keymap.set("n", "<leader>sp", "<cmd>Telescope project<cr>", { desc = "[S]earch [P]roject" })
+
+		-- Open selected file in vertical or horizontal split
+		vim.keymap.set("n", "<C-s", function(prompt_bufnr)
+			require("telescope.actions").select_vertical(prompt_bufnr)
+		end, { desc = "Open selected file in vertical split" })
+
+		vim.keymap.set("n", "<C-h", function(prompt_bufnr)
+			require("telescope.actions").select_horizontal(prompt_bufnr)
+		end, { desc = "Open selected file in horizontal split" })
+
+		vim.keymap.set("i", "<C-s", function(prompt_bufnr)
+			require("telescope.actions").select_vertical(prompt_bufnr)
+		end, { desc = "Open selected file in vertical split" })
+
+		vim.keymap.set("i", "<C-h", function(prompt_bufnr)
+			require("telescope.actions").select_horizontal(prompt_bufnr)
+		end, { desc = "Open selected file in horizontal split" })
 	end,
 }

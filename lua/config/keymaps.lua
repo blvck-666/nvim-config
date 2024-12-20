@@ -31,3 +31,9 @@ map("v", "K", ":m '<-2<CR>gv=gv", opts("Move selected lines up"))
 -- [[ LINE(s) INDENTATION ]]
 map("v", ">", ">gv", opts("Indet selected line"))
 map("v", "<", "<gv", opts("Outdent selected line"))
+
+-- [[ Windows resize ]]
+map("n", "<C-Up>", ":resize +2<CR>", opts("Increase window size"))
+map("n", "<C-Down>", ":resize -2<CR>", opts("Decrease window size"))
+map("n", "<C-Left>", ":vertical resize -2<CR>", opts("Decrease vertical window size"))
+map("n", "<C-Right>", ":vertical resize +2<CR>", opts("Increase vertical window size"))
